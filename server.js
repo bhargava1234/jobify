@@ -17,6 +17,8 @@ import userRouter from "./routers/userRouter.js";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 import { authenticateUser } from "./middleware/authMiddleware.js";
 import cloudinary from "cloudinary";
+import helmet from "helmet";
+import mongoSanitize from "express-mongo-sanitize";
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -35,6 +37,8 @@ app.use(express.static(path.resolve(__dirname, "./client/dist")));
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser());
+app.use(helmet());
+app.use(mongoSanitize());
 
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.use("/api/v1/auth", authRouter);
