@@ -9,6 +9,7 @@ export const JOB_TYPE = {
   PART_TIME: "part-time",
   INTERNSHIP: "internship",
   HOURLY_BASE: "hourly-base",
+  Weakly_BASE: "weakly-base",
 };
 
 export const JOB_SORT_BY = {
